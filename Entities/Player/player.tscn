@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4q4sljsrabqf"]
+
+[ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_iaco5"]
+[ext_resource type="Texture2D" uid="uid://bj2fdp3jmi5pf" path="res://Sprites.png" id="2_50xov"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxt01"]
+size = Vector2(10, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uxrsq"]
+radius = 8.06226
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_iaco5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_50xov")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(0, 96, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pxt01")
+
+[node name="ItemDetector" type="Area2D" parent="."]
+position = Vector2(0, -5)
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDetector"]
+shape = SubResource("CircleShape2D_uxrsq")
+
+[node name="Hand" type="RemoteTransform2D" parent="."]
+position = Vector2(4, -5)
+
+[connection signal="area_entered" from="ItemDetector" to="." method="_on_item_detector_area_entered"]

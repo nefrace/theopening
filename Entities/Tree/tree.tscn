@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlp73185uw4f2"]
+
+[ext_resource type="Texture2D" uid="uid://bj2fdp3jmi5pf" path="res://Sprites.png" id="1_3tf6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogvfd"]
+size = Vector2(10, 6)
+
+[node name="Tree" type="StaticBody2D"]
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3tf6u")
+offset = Vector2(0, -10)
+region_enabled = true
+region_rect = Rect2(1, 66, 22, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ogvfd")
