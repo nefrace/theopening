@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddnu45qq0utpf"]
 
-[ext_resource type="Texture2D" uid="uid://bj2fdp3jmi5pf" path="res://Assets/Textures/Sprites.png" id="1_x3u4j"]
+[ext_resource type="Texture2D" uid="uid://cxbdan57wac2q" path="res://Assets/Textures/Main character sprites.png" id="1_2db60"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4lsj3"]
 radius = 6.08276
@@ -9,10 +9,10 @@ radius = 6.08276
 y_sort_enabled = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_x3u4j")
+texture = ExtResource("1_2db60")
 offset = Vector2(0, -8)
 region_enabled = true
-region_rect = Rect2(0, 16, 16, 16)
+region_rect = Rect2(48, 142, 16, 19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)

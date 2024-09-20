@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwsc3ce14gh0l"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/PaletteSwapper.gdshader" id="1_m4pgr"]
+
+[resource]
+shader = ExtResource("1_m4pgr")
+shader_parameter/color_1 = Color(0.443137, 0.192157, 0.254902, 1)
+shader_parameter/color_2 = Color(0.317647, 0.156863, 0.223529, 1)
+shader_parameter/color_3 = Color(0.192157, 0.129412, 0.215686, 1)
+shader_parameter/color_4 = Color(0.101961, 0.129412, 0.160784, 1)
+shader_parameter/offset = 0.5
