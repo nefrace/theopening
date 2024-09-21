@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://cyrss07tgwgyx"]
+[gd_scene load_steps=7 format=4 uid="uid://cyrss07tgwgyx"]
 
 [ext_resource type="TileSet" uid="uid://rxtvhy2bu531" path="res://Assets/Tileset.tres" id="2_64ad6"]
 [ext_resource type="PackedScene" uid="uid://b4q4sljsrabqf" path="res://Entities/Player/player.tscn" id="3_07ixw"]
 [ext_resource type="PackedScene" uid="uid://durcet21wu7hc" path="res://Entities/Utils/LevelSwitcher/level_switcher.tscn" id="4_fqobk"]
 [ext_resource type="PackedScene" uid="uid://dlp73185uw4f2" path="res://Entities/Tree/tree.tscn" id="5_efpa4"]
 [ext_resource type="PackedScene" uid="uid://pe051qtjf0vx" path="res://Scenes/TestDungeon.tscn" id="5_gtbnn"]
+[ext_resource type="AudioStream" uid="uid://b7duaigfajfyt" path="res://Assets/Audio/noise.mp3" id="6_yldw2"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -50,3 +51,8 @@ position = Vector2(121, 107)
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("4_fqobk")]
 new_scene = ExtResource("5_gtbnn")
+
+[node name="GB Noise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_yldw2")
+autoplay = true
+parameters/looping = true

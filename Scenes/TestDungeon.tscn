@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://pe051qtjf0vx"]
+[gd_scene load_steps=8 format=4 uid="uid://pe051qtjf0vx"]
 
 [ext_resource type="TileSet" uid="uid://rxtvhy2bu531" path="res://Assets/Tileset.tres" id="1_cbh1q"]
 [ext_resource type="PackedScene" uid="uid://b4q4sljsrabqf" path="res://Entities/Player/player.tscn" id="2_sor64"]
 [ext_resource type="PackedScene" uid="uid://60g2ndb2rrx6" path="res://Entities/Items/Lamp/Lamp.tscn" id="4_ewapk"]
 [ext_resource type="PackedScene" uid="uid://ddnu45qq0utpf" path="res://Entities/Rat/Rat.tscn" id="4_pqen6"]
 [ext_resource type="PackedScene" uid="uid://fnxenqhvxe6q" path="res://Entities/StandingLight/Light.tscn" id="6_h326t"]
-[ext_resource type="PackedScene" uid="uid://bygfc8w3ngsk4" path="res://Assets/Shaders/shader_overlay.tscn" id="6_w18ac"]
+[ext_resource type="AudioStream" uid="uid://d1r3o5o175yt1" path="res://Assets/Audio/bgm.mp3" id="6_mj12t"]
+[ext_resource type="AudioStream" uid="uid://b7duaigfajfyt" path="res://Assets/Audio/noise.mp3" id="7_687bo"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -40,7 +41,14 @@ position = Vector2(185, 161)
 [node name="ShaderOverlay" parent="." instance=ExtResource("6_w18ac")]
 visible = false
 
-[node name="Rat" parent="." instance=ExtResource("4_pqen6")]
-position = Vector2(238, 158)
+[node name="BGM#1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_mj12t")
+autoplay = true
+parameters/looping = true
+
+[node name="GB Noise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_687bo")
+autoplay = true
+parameters/looping = true
 
 [editable path="Torch"]
