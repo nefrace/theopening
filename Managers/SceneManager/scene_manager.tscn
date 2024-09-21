@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bknv5epujaxqv"]
+
+[ext_resource type="Shader" path="res://Managers/SceneManager/circlefader.gdshader" id="1_76b36"]
+[ext_resource type="Script" path="res://Managers/SceneManager/scene_manager.gd" id="1_d1sky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vsk0"]
+shader = ExtResource("1_76b36")
+shader_parameter/center = Vector2(80, 72)
+shader_parameter/radius = 320.0
+shader_parameter/resolution = Vector2(160, 144)
+
+[node name="SceneManager" type="CanvasLayer"]
+script = ExtResource("1_d1sky")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4vsk0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

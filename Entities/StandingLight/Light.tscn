@@ -106,6 +106,7 @@ region_rect = Rect2(40, 139, 16, 21)
 script = ExtResource("2_3syqq")
 
 [node name="Flame" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_cqral")

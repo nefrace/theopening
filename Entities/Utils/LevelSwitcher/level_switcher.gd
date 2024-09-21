@@ -16,4 +16,4 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		get_tree().change_scene_to_packed(new_scene)
+		SceneManager.switch_to_packed(new_scene, body.position - get_viewport_rect().position)

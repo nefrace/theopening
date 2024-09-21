@@ -1,10 +1,10 @@
 shader_type canvas_item;
 
-// edited and updated by Krankomat, Aug 17, 2019 
-// ---------- 
-// based on: http://ivanskodje.com/2016/10/20/godot-engine-godot-gameboy-shaders/ 
-// author: Ivan Skodje 
-// date: Oct 20, 2016 
+// edited and updated by Krankomat, Aug 17, 2019
+// ----------
+// based on: http://ivanskodje.com/2016/10/20/godot-engine-godot-gameboy-shaders/
+// author: Ivan Skodje
+// date: Oct 20, 2016
 
 
 // Colors that we will use
@@ -31,28 +31,28 @@ vec4 colorize(vec4 grayscale)
     // Set brightest color 1
     if(grayscale.r > offset * 1.5)
         return vec4(color_1);
-    
+
     // Color greater than (default) 0.50 in value
     // Set bright color 2
     if(grayscale.r > offset)
         return vec4(color_2);
-    
+
     // Color greater than (default) 0.25 in value
     // Set dark color 3
     if(grayscale.r > offset * 0.5)
         return vec4(color_3);
-    
+
     // Color greater than 0 in value
     // Set darkest color 4
     return vec4(color_4);
 }
 
 
-void fragment() 
-{ 
-    // Get pixel color on screen 
-    vec4 pixel_color =  vec4(texture(SCREEN_TEXTURE, SCREEN_UV)); 
-    
+void fragment()
+{
+    // Get pixel color on screen
+    vec4 pixel_color =  vec4(texture(SCREEN_TEXTURE, SCREEN_UV));
+
     // Set the pixel color we are going to use
     COLOR = colorize(to_grayscale(pixel_color));
-} 
+}

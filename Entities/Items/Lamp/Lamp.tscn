@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://60g2ndb2rrx6"]
 
-[ext_resource type="Texture2D" uid="uid://bj2fdp3jmi5pf" path="res://Assets/Textures/Sprites.png" id="1_bdxab"]
+[ext_resource type="Texture2D" uid="uid://canolreiialk3" path="res://Assets/Textures/sheet_full.png" id="1_ynmmt"]
 [ext_resource type="Texture2D" uid="uid://5uu7jagy3e0q" path="res://Assets/Textures/Fire flickering.png" id="2_cirq5"]
-[ext_resource type="Script" path="res://Entities/Lamp/lamp.gd" id="2_rm16p"]
+[ext_resource type="Script" path="res://Entities/Items/Lamp/lamp.gd" id="2_rm16p"]
 [ext_resource type="Gradient" uid="uid://dbfcqk0okidnn" path="res://Assets/Textures/Light.tres" id="4_7iaxx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5f7fn"]
@@ -93,10 +93,10 @@ _data = {
 }
 
 [node name="Lamp" type="Sprite2D" groups=["Items", "Light"]]
-texture = ExtResource("1_bdxab")
+texture = ExtResource("1_ynmmt")
 offset = Vector2(0, -6.93)
 region_enabled = true
-region_rect = Rect2(29, 72, 6, 14)
+region_rect = Rect2(100, 452, 8, 12)
 script = ExtResource("2_rm16p")
 
 [node name="Flame" type="AnimatedSprite2D" parent="."]

@@ -1,0 +1,229 @@
+[gd_scene load_steps=26 format=3 uid="uid://ddnu45qq0utpf"]
+
+[ext_resource type="Script" path="res://Entities/Rat/rat.gd" id="1_afsns"]
+[ext_resource type="Texture2D" uid="uid://oojp4rqatiok" path="res://Assets/Textures/Rat.png" id="1_dyigl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2dlq"]
+radius = 7.0
+height = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6r8h4"]
+radius = 11.0
+
+[sub_resource type="Animation" id="Animation_rkj48"]
+resource_name = "Bite"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.366667, 0.433333, 0.623282, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 5, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"bite"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4mlq4"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mb0ib"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_2fuj6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fwpbv"]
+resource_name = "Run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulv3w"]
+_data = {
+"Bite": SubResource("Animation_rkj48"),
+"Hit": SubResource("Animation_4mlq4"),
+"Idle": SubResource("Animation_mb0ib"),
+"RESET": SubResource("Animation_2fuj6"),
+"Run": SubResource("Animation_fwpbv")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kilmo"]
+animation = &"Bite"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r6mxq"]
+animation = &"Hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5kls7"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eegso"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ypgr"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uuuqi"]
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nnxw4"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7yt03"]
+advance_mode = 2
+advance_condition = &"bite"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p4vti"]
+advance_mode = 2
+advance_condition = &"bite"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sque5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_shibs"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r85oo"]
+advance_mode = 2
+advance_condition = &"got_hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ukmob"]
+advance_mode = 2
+advance_condition = &"got_hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_syf4j"]
+advance_mode = 2
+advance_condition = &"got_hit"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_25nvn"]
+states/Bite/node = SubResource("AnimationNodeAnimation_kilmo")
+states/Bite/position = Vector2(504, 232)
+states/Hit/node = SubResource("AnimationNodeAnimation_r6mxq")
+states/Hit/position = Vector2(697, 154)
+states/Idle/node = SubResource("AnimationNodeAnimation_5kls7")
+states/Idle/position = Vector2(373, 72)
+states/Run/node = SubResource("AnimationNodeAnimation_eegso")
+states/Run/position = Vector2(652, 79)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5ypgr"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_uuuqi"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_nnxw4"), "Run", "Bite", SubResource("AnimationNodeStateMachineTransition_7yt03"), "Idle", "Bite", SubResource("AnimationNodeStateMachineTransition_p4vti"), "Bite", "Idle", SubResource("AnimationNodeStateMachineTransition_sque5"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_shibs"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_r85oo"), "Bite", "Hit", SubResource("AnimationNodeStateMachineTransition_ukmob"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_syf4j")]
+graph_offset = Vector2(15, 12)
+
+[node name="Rat" type="CharacterBody2D" groups=["Enemies", "Hitable"]]
+y_sort_enabled = true
+collision_layer = 5
+motion_mode = 1
+script = ExtResource("1_afsns")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_dyigl")
+offset = Vector2(0, -12)
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x2dlq")
+
+[node name="PlayerBiter" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBiter"]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_6r8h4")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
+collision_mask = 10
+hit_from_inside = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ulv3w")
+}
+next/Bite = &"Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_25nvn")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/bite = false
+parameters/conditions/got_hit = false
+parameters/conditions/idle = false
+parameters/conditions/run = false

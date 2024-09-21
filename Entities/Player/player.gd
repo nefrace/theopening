@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var controls_enabled := true
 @export var invincible := false
+@export var health := 3
 
 @export var SPEED = 100.0
 const PICKUP_DISTANCE = 10
@@ -23,14 +26,21 @@ func _process(delta: float) -> void:
 			break
 	if Input.is_action_just_pressed("action"):
 		if nearItem != null && holdingItem == null:
-			$Hand.remote_path = nearItem.get_path()
+			%Hand.remote_path = nearItem.get_path()
 			holdingItem = nearItem
 		elif holdingItem != null:
-			$Hand.remote_path = ""
+			%Hand.remote_path = ""
 			holdingItem = null
 			
 
 func attack():
+	if holdingItem != null:
+		return
+	var bodies : Array[Node2D] = $HitArea.get_overlapping_bodies()
+	if len(bodies) != 0:
+		for body in bodies:
+			if body.is_in_group("Hitable"):
+				body.hit_trigger = true
 	$AnimationTree.set("parameters/conditions/attack", true)
 	await get_tree().create_timer(0.2).timeout
 	$AnimationTree.set("parameters/conditions/attack", false)
@@ -42,7 +52,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("attack"):
 			attack()
 			
-
 	if direction:
 		var anim_dir := direction * Vector2(1, -1)
 		$AnimationTree.set("parameters/conditions/idle", false)
@@ -51,6 +60,7 @@ func _physics_process(delta: float) -> void:
 		$AnimationTree.set("parameters/Idle/blend_position", anim_dir)
 		$AnimationTree.set("parameters/Running/blend_position", anim_dir)
 		$AnimationTree.set("parameters/Hit/blend_position", anim_dir)
+		$HitArea.look_at(position + direction)
 		velocity = direction * SPEED
 	else:
 		velocity = Vector2.ZERO
@@ -58,6 +68,12 @@ func _physics_process(delta: float) -> void:
 		$AnimationTree.set("parameters/conditions/running", false)
 
 	move_and_slide()
+	
+	
+func got_hit():
+	$AnimationTree.set("parameters/conditions/got_hit", true)
+	await get_tree().create_timer(0.2).timeout
+	$AnimationTree.set("parameters/conditions/got_hit", false)
 
 
 func _on_light_trigger_area_entered(area: Area2D) -> void:
