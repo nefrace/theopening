@@ -29,10 +29,10 @@ func restart(center_in: Vector2 = Vector2(80, 72), center_out: Vector2 = Vector2
 
 func tween_in():
 	var tw = get_tree().create_tween()
-	tw.tween_property($ColorRect.material, "shader_parameter/radius", 0, 1).set_trans(Tween.TRANS_EXPO)
+	tw.tween_property($ColorRect.material, "shader_parameter/radius", 0, 1).set_trans(Tween.TRANS_QUAD)
 	await tw.finished
 
 func tween_out():
 	var tw = get_tree().create_tween()
-	tw.tween_property($ColorRect.material, "shader_parameter/radius", 320, 1).set_trans(Tween.TRANS_EXPO)
+	tw.tween_property($ColorRect.material, "shader_parameter/radius", 220, 1).set_trans(Tween.TRANS_QUAD)
 	await tw.finished

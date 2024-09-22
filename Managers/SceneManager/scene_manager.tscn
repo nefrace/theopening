@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4vsk0"]
 shader = ExtResource("1_76b36")
 shader_parameter/center = Vector2(80, 72)
-shader_parameter/radius = 320.0
+shader_parameter/radius = 220.0
 shader_parameter/resolution = Vector2(160, 144)
 
 [node name="SceneManager" type="CanvasLayer"]
