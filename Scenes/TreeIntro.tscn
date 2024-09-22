@@ -11,6 +11,8 @@ script/source = "extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameTimer.time = 0
+	GameTimer.start()
 	MusicManager.music = MusicManager.bgm1
 
 

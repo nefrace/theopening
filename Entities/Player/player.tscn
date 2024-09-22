@@ -1,10 +1,11 @@
-[gd_scene load_steps=69 format=3 uid="uid://b4q4sljsrabqf"]
+[gd_scene load_steps=70 format=3 uid="uid://b4q4sljsrabqf"]
 
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_iaco5"]
 [ext_resource type="Texture2D" uid="uid://cxbdan57wac2q" path="res://Assets/Textures/Main character sprites.png" id="2_vke05"]
 [ext_resource type="FontFile" uid="uid://c0l8efadfe7gp" path="res://Assets/Fonts/monogram-extended.ttf" id="3_ovsu3"]
 [ext_resource type="AudioStream" uid="uid://bqcvuhclf7vis" path="res://Assets/Audio/sfx/sfx_player_hit.mp3" id="4_5prmw"]
 [ext_resource type="AudioStream" uid="uid://b1587xxkpblye" path="res://Assets/Audio/sfx/sfx_sword_swoosh.mp3" id="5_inyyo"]
+[ext_resource type="Theme" uid="uid://gngdeduu1h14" path="res://UI/Theme.tres" id="6_i27ag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxt01"]
 size = Vector2(10, 8)
@@ -1121,6 +1122,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_i27ag")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -1159,6 +1161,10 @@ texture = SubResource("AtlasTexture_2j16p")
 [node name="LIVES5" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/CenterContainer/LIVES"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_qjaim")
+
+[node name="DeadTimer" type="Label" parent="CanvasLayer/Control/PanelContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="InvinsibleTimer" type="Timer" parent="."]
 

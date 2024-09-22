@@ -40,6 +40,7 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
 [resource]
+default_font = ExtResource("1_1megq")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(1, 1, 1, 1)
@@ -49,4 +50,6 @@ Button/styles/focus = SubResource("StyleBoxFlat_oa5yv")
 Button/styles/hover = SubResource("StyleBoxFlat_oa5yv")
 Button/styles/normal = SubResource("StyleBoxFlat_y3fot")
 Button/styles/pressed = SubResource("StyleBoxFlat_27iy5")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = ExtResource("1_1megq")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_68eo0")

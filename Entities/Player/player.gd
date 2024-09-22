@@ -18,6 +18,7 @@ var nearLight: Node2D
 
 
 func _process(delta: float) -> void:
+	#print(GameTimer.get_string())
 	var j := 1
 	for live in %LIVES.get_children():
 		var tex := live as TextureRect
@@ -117,6 +118,11 @@ func got_hit():
 		explosion.radius = 20
 		add_sibling(explosion)
 		controls_enabled = false
+		GameTimer.stop()
+		%LIVES.hide()
+		%DeadTimer.show()
+		%DeadTimer.text = "You're dead"
+		MusicManager.stop_music()
 
 
 func _on_light_trigger_area_entered(area: Area2D) -> void:

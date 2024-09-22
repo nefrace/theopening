@@ -12,6 +12,7 @@ func hit():
 	modulate = Color.WHITE
 	if health <= 0:
 		MusicManager.stop_music()
+		GameTimer.stop()
 
 func _process(delta: float):
 	$SnakeBar/Control/PanelContainer/Health.value = health

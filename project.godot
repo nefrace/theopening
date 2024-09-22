@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ShaderOverlay="*res://Assets/Shaders/shader_overlay.tscn"
 SceneManager="*res://Managers/SceneManager/scene_manager.tscn"
 MusicManager="*res://Managers/MusicManager.gd"
+GameTimer="*res://Managers/GameTimer.gd"
 
 [display]
 

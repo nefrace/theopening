@@ -8,7 +8,7 @@
 size = Vector2(12, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6r8h4"]
-radius = 11.0
+radius = 13.0
 
 [sub_resource type="Animation" id="Animation_oqowg"]
 resource_name = "Fly"

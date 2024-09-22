@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func death():
 	$Dead.play()
-	await get_tree().create_timer(randf_range(0.5, 4)).timeout
+	await get_tree().create_timer(randf_range(0.5, 3)).timeout
 	var e := explosion.instantiate()
 	e.position = position
 	e.radius = randf_range(16, 22)

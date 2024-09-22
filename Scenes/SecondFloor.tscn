@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dc54h3tyhiro3"]
+[gd_scene load_steps=12 format=4 uid="uid://dc54h3tyhiro3"]
 
 [ext_resource type="PackedScene" uid="uid://b4q4sljsrabqf" path="res://Entities/Player/player.tscn" id="2_tyu3i"]
 [ext_resource type="TileSet" uid="uid://rxtvhy2bu531" path="res://Assets/Tileset.tres" id="3_xqney"]
@@ -10,11 +10,26 @@
 [ext_resource type="Script" path="res://Managers/lights_door_opener.gd" id="10_hvoj3"]
 [ext_resource type="PackedScene" uid="uid://ulv4q3ww86sc" path="res://UI/PauseMenu/PauseMenu.tscn" id="10_l25ry"]
 
+[sub_resource type="GDScript" id="GDScript_xclyy"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	GameTimer.start()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4t8v2"]
 size = Vector2(32, 16)
 
 [node name="FirstRooms" type="Node2D"]
 y_sort_enabled = true
+script = SubResource("GDScript_xclyy")
 
 [node name="Player" parent="." node_paths=PackedStringArray("holdingItem") instance=ExtResource("2_tyu3i")]
 position = Vector2(96, 112)
@@ -67,7 +82,6 @@ position = Vector2(40, 58)
 position = Vector2(152, 58)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="ShaderOverlay" parent="." instance=ExtResource("7_ci4l7")]
