@@ -46,27 +46,28 @@ position = Vector2(102, 117)
 position = Vector2(40, -38)
 
 [node name="R1" parent="." groups=["Active"] instance=ExtResource("6_cya67")]
-position = Vector2(137, -38)
+position = Vector2(152, -38)
 
 [node name="L2" parent="." groups=["Active"] instance=ExtResource("6_cya67")]
 position = Vector2(40, -6)
 
 [node name="R2" parent="." groups=["Inactive"] instance=ExtResource("6_cya67")]
-position = Vector2(136, -6)
+position = Vector2(152, -6)
 
 [node name="L3" parent="." groups=["Inactive"] instance=ExtResource("6_cya67")]
 position = Vector2(40, 26)
 
 [node name="R3" parent="." groups=["Active"] instance=ExtResource("6_cya67")]
-position = Vector2(137, 26)
+position = Vector2(152, 26)
 
 [node name="L4" parent="." groups=["Active"] instance=ExtResource("6_cya67")]
 position = Vector2(40, 58)
 
 [node name="R4" parent="." groups=["Inactive"] instance=ExtResource("6_cya67")]
-position = Vector2(137, 58)
+position = Vector2(152, 58)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="ShaderOverlay" parent="." instance=ExtResource("7_ci4l7")]

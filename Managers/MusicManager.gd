@@ -15,9 +15,11 @@ var bossfight = preload("res://Assets/Audio/mb boss.mp3")
 		start_music()
 
 func _ready():
+	playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	var noiseStream := AudioStreamPlayer.new()
 	noiseStream.stream = noise
+	noiseStream.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	add_child(noiseStream)
 	noiseStream.play()
 	bus = "Music"
