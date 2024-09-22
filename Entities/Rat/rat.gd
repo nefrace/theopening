@@ -67,6 +67,4 @@ func bite():
 	var bodies : Array[Node2D] = $PlayerBiter.get_overlapping_bodies()
 	for body in bodies:
 		if body is Player:
-			body.health -= 1
 			body.got_hit()
-			print(body.health)

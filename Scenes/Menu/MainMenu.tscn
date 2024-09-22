@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2ac6mel83phd"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/MainMenu.gd" id="1_5qfvl"]
+[ext_resource type="Theme" uid="uid://gngdeduu1h14" path="res://UI/Theme.tres" id="2_1avjt"]
+[ext_resource type="FontFile" uid="uid://c0l8efadfe7gp" path="res://Assets/Fonts/monogram-extended.ttf" id="3_xmknw"]
+
+[node name="Menu" type="CanvasLayer"]
+layer = 76
+script = ExtResource("1_5qfvl")
+nextScene = "res://Scenes/TreeIntro.tscn"
+
+[node name="Menu" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_1avjt")
+
+[node name="PanelContainer" type="PanelContainer" parent="Menu"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/PanelContainer"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Start" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+use_parent_material = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Credits")
+text = "Start"
+
+[node name="Credits" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+use_parent_material = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+text = "Credits"
+
+[node name="Quit" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+use_parent_material = true
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Start")
+text = "Quit"
+
+[node name="CreditsMenu" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CreditsMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xmknw")
+text = "Nefrace
+Code, level design
+
+Purely Grey
+Music, SFX
+
+
+Graphics
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

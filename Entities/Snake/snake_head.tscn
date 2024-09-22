@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm485bpaocf0y"]
+[gd_scene load_steps=9 format=3 uid="uid://cm485bpaocf0y"]
 
 [ext_resource type="Script" path="res://Entities/Snake/snake_head.gd" id="1_1eo3u"]
 [ext_resource type="Texture2D" uid="uid://canolreiialk3" path="res://Assets/Textures/sheet_full.png" id="1_ahinv"]
+[ext_resource type="AudioStream" uid="uid://k2egfaep43q" path="res://Assets/Audio/sfx/sfx_boss_dies.mp3" id="3_nfiau"]
 
 [sub_resource type="Animation" id="Animation_ybh5e"]
 resource_name = "Clack"
@@ -44,7 +45,12 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_0iq7e"]
 radius = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljg6d"]
+radius = 7.0
+
 [node name="Snake" type="Area2D"]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_1eo3u")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -62,3 +68,13 @@ autoplay = "Clack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0iq7e")
+
+[node name="Hitter" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitter"]
+shape = SubResource("CircleShape2D_ljg6d")
+
+[node name="Dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nfiau")
+
+[connection signal="body_entered" from="Hitter" to="." method="_on_hitter_body_entered"]

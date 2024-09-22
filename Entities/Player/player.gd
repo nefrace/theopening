@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var controls_enabled := true
-@export var invincible := false
+var invincible := false
 @export var health := 5
 var dead := false
 var explosionScene = preload("res://Entities/Utils/Explosion/Explosion.tscn")
@@ -61,11 +61,15 @@ func attack():
 	if holdingItem != null:
 		return
 	var bodies : Array[Node2D] = $HitArea.get_overlapping_bodies()
-	$Swing.play()
-	if len(bodies) != 0:
-		for body in bodies:
-			if body.is_in_group("Hitable"):
-				body.hit_trigger = true
+	var areas : Array[Area2D] = $HitArea.get_overlapping_areas()
+	$Swing.play()	
+	for body in bodies:
+		if body.is_in_group("Hitable"):
+			body.hit_trigger = true
+	for area in areas: # SNAKE
+		if area.has_method("hit"):
+			area.hit()
+			break
 	$AnimationTree.set("parameters/conditions/attack", true)
 	await get_tree().create_timer(0.2).timeout
 	$AnimationTree.set("parameters/conditions/attack", false)
@@ -96,6 +100,11 @@ func _physics_process(delta: float) -> void:
 	
 	
 func got_hit():
+	if invincible == true:
+		return
+	invincible = true
+	$InvinsibleTimer.start(1)
+	health -= 1
 	$Hit.play()
 	$AnimationTree.set("parameters/conditions/got_hit", true)
 	await get_tree().create_timer(0.2).timeout
@@ -122,3 +131,7 @@ func _on_light_trigger_area_entered(area: Area2D) -> void:
 
 func _on_light_trigger_area_exited(area: Area2D) -> void:
 	nearLight = null
+
+
+func _on_invinsible_timer_timeout() -> void:
+	invincible = false

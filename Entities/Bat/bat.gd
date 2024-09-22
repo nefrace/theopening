@@ -61,9 +61,7 @@ func bite():
 	var bodies : Array[Node2D] = $PlayerBiter.get_overlapping_bodies()
 	for body in bodies:
 		if body is Player:
-			body.health -= 1
 			body.got_hit()
-			print(body.health)
 	await get_tree().create_timer(0.3).timeout
 	active = true 
 	await get_tree().create_timer(1).timeout

@@ -67,22 +67,10 @@ tracks/3/path = NodePath(".:controls_enabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:invincible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_bm2la"]
@@ -132,22 +120,10 @@ tracks/3/path = NodePath(".:controls_enabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:invincible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_2qn5f"]
@@ -197,22 +173,10 @@ tracks/3/path = NodePath(".:controls_enabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:invincible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_0spj8"]
@@ -262,22 +226,10 @@ tracks/3/path = NodePath(".:controls_enabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:invincible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_qv60a"]
@@ -493,18 +445,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:invincible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_t1mcy"]
@@ -1060,27 +1000,27 @@ radius = 12.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yk5jk"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_78ufm"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p64go"]
 load_path = "res://.godot/imported/lives sprites.png-40cd84572a90f731d1c03f1f6bf7bbaa.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08i2f"]
-atlas = SubResource("CompressedTexture2D_78ufm")
+atlas = SubResource("CompressedTexture2D_p64go")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5in26"]
-atlas = SubResource("CompressedTexture2D_78ufm")
+atlas = SubResource("CompressedTexture2D_p64go")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rn8r6"]
-atlas = SubResource("CompressedTexture2D_78ufm")
+atlas = SubResource("CompressedTexture2D_p64go")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2j16p"]
-atlas = SubResource("CompressedTexture2D_78ufm")
+atlas = SubResource("CompressedTexture2D_p64go")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjaim"]
-atlas = SubResource("CompressedTexture2D_78ufm")
+atlas = SubResource("CompressedTexture2D_p64go")
 region = Rect2(16, 0, 16, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -1144,7 +1084,7 @@ parameters/Idle/blend_position = Vector2(0.134328, 0.232068)
 parameters/Running/blend_position = Vector2(0.357331, 0.127937)
 
 [node name="HitArea" type="Area2D" parent="." groups=["Player"]]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 4
 monitorable = false
 
@@ -1220,6 +1160,9 @@ texture = SubResource("AtlasTexture_2j16p")
 layout_mode = 2
 texture = SubResource("AtlasTexture_qjaim")
 
+[node name="InvinsibleTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="ItemDetector" to="." method="_on_item_detector_area_entered"]
 [connection signal="area_entered" from="LightTrigger" to="." method="_on_light_trigger_area_entered"]
 [connection signal="area_exited" from="LightTrigger" to="." method="_on_light_trigger_area_exited"]
+[connection signal="timeout" from="InvinsibleTimer" to="." method="_on_invinsible_timer_timeout"]

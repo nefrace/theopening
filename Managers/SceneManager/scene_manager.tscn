@@ -11,6 +11,7 @@ shader_parameter/resolution = Vector2(160, 144)
 
 [node name="SceneManager" type="CanvasLayer"]
 process_mode = 3
+layer = 126
 script = ExtResource("1_d1sky")
 
 [node name="ColorRect" type="ColorRect" parent="."]

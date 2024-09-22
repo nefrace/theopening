@@ -16,9 +16,13 @@ var bossfight = preload("res://Assets/Audio/mb boss.mp3")
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	var noiseStream := AudioStreamPlayer.new()
+	noiseStream.stream = noise
+	add_child(noiseStream)
+	noiseStream.play()
 	bus = "Music"
 
-func start_music(time: float = 1):
+func start_music(time: float = 0):
 	var t := get_tree().create_tween()
 	play()
 	volume_db = linear_to_db(0.001)
@@ -26,7 +30,7 @@ func start_music(time: float = 1):
 	await t.finished
 		
 
-func stop_music(time: float = 1):
+func stop_music(time: float = 0):
 	var t := get_tree().create_tween()
 	t.tween_property(self, "volume_db", linear_to_db(0.001), time)
 	await t.finished
