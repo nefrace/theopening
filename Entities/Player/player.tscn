@@ -1,8 +1,10 @@
-[gd_scene load_steps=60 format=3 uid="uid://b4q4sljsrabqf"]
+[gd_scene load_steps=69 format=3 uid="uid://b4q4sljsrabqf"]
 
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_iaco5"]
 [ext_resource type="Texture2D" uid="uid://cxbdan57wac2q" path="res://Assets/Textures/Main character sprites.png" id="2_vke05"]
 [ext_resource type="FontFile" uid="uid://c0l8efadfe7gp" path="res://Assets/Fonts/monogram-extended.ttf" id="3_ovsu3"]
+[ext_resource type="AudioStream" uid="uid://bqcvuhclf7vis" path="res://Assets/Audio/sfx/sfx_player_hit.mp3" id="4_5prmw"]
+[ext_resource type="AudioStream" uid="uid://b1587xxkpblye" path="res://Assets/Audio/sfx/sfx_sword_swoosh.mp3" id="5_inyyo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxt01"]
 size = Vector2(10, 8)
@@ -292,7 +294,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Rect2(0, 0, 16, 16)]
+"values": [Rect2(32, 144, 16, 16)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -333,7 +335,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Rect2(64, 0, 16, 16)]
+"values": [Rect2(1, 144, 13, 16)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -374,7 +376,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Rect2(64, 0, 16, 16)]
+"values": [Rect2(1, 144, 13, 16)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -415,7 +417,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Rect2(32, 0, 16, 16)]
+"values": [Rect2(64, 144, 16, 16)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1056,6 +1058,31 @@ radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k3wk7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yk5jk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_78ufm"]
+load_path = "res://.godot/imported/lives sprites.png-40cd84572a90f731d1c03f1f6bf7bbaa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08i2f"]
+atlas = SubResource("CompressedTexture2D_78ufm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5in26"]
+atlas = SubResource("CompressedTexture2D_78ufm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn8r6"]
+atlas = SubResource("CompressedTexture2D_78ufm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j16p"]
+atlas = SubResource("CompressedTexture2D_78ufm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjaim"]
+atlas = SubResource("CompressedTexture2D_78ufm")
+region = Rect2(16, 0, 16, 16)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 3
@@ -1127,7 +1154,7 @@ shape = SubResource("CircleShape2D_r6kot")
 
 [node name="Hand" type="RemoteTransform2D" parent="HitArea"]
 unique_name_in_owner = true
-position = Vector2(3, 2)
+position = Vector2(6, 5)
 update_rotation = false
 update_scale = false
 
@@ -1139,5 +1166,60 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LightTrigger"]
 shape = SubResource("CircleShape2D_k3wk7")
 
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5prmw")
+
+[node name="Swing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_inyyo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yk5jk")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/PanelContainer"]
+layout_mode = 2
+
+[node name="LIVES" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LIVES1" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/CenterContainer/LIVES"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_08i2f")
+
+[node name="LIVES2" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/CenterContainer/LIVES"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_5in26")
+
+[node name="LIVES3" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/CenterContainer/LIVES"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_rn8r6")
+
+[node name="LIVES4" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/CenterContainer/LIVES"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_2j16p")
+
+[node name="LIVES5" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/CenterContainer/LIVES"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_qjaim")
+
 [connection signal="area_entered" from="ItemDetector" to="." method="_on_item_detector_area_entered"]
 [connection signal="area_entered" from="LightTrigger" to="." method="_on_light_trigger_area_entered"]
+[connection signal="area_exited" from="LightTrigger" to="." method="_on_light_trigger_area_exited"]

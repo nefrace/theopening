@@ -13,7 +13,8 @@ func _ready():
 	max_lifetime = lifetime
 	material.set_shader_parameter("color", color)
 	material.set_shader_parameter("inner_offset", Vector2(randf_range(-0.5, 0.5), randf_range(-0.5, 0.5)))
-	$SFX.stream = sfx
+	if sfx != null:
+		$SFX.stream = sfx
 	$SFX.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://fnxenqhvxe6q"]
+[gd_scene load_steps=18 format=3 uid="uid://fnxenqhvxe6q"]
 
 [ext_resource type="Texture2D" uid="uid://b7gsjnbhu2h7c" path="res://Assets/Textures/Dungeon interior.png" id="1_picyn"]
 [ext_resource type="Script" path="res://Entities/StandingLight/light.gd" id="2_3syqq"]
 [ext_resource type="Texture2D" uid="uid://5uu7jagy3e0q" path="res://Assets/Textures/Fire flickering.png" id="2_rujl2"]
 [ext_resource type="Gradient" uid="uid://dbfcqk0okidnn" path="res://Assets/Textures/Light.tres" id="4_rafa5"]
+[ext_resource type="AudioStream" uid="uid://ckxd6pq4md0ks" path="res://Assets/Audio/sfx/sfx_torch_lit.mp3" id="5_mr4i5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5f7fn"]
 atlas = ExtResource("2_rujl2")
@@ -50,8 +51,8 @@ animations = [{
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4c7y4"]
 gradient = ExtResource("4_rafa5")
-width = 160
-height = 160
+width = 200
+height = 200
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
@@ -129,15 +130,18 @@ libraries = {
 }
 autoplay = "LightSize"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="LightTrigger" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightTrigger"]
 shape = SubResource("CircleShape2D_0j0h2")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_vjqkm")
+
+[node name="Lit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mr4i5")

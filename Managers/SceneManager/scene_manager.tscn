@@ -10,9 +10,11 @@ shader_parameter/radius = 320.0
 shader_parameter/resolution = Vector2(160, 144)
 
 [node name="SceneManager" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_d1sky")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 3
 material = SubResource("ShaderMaterial_4vsk0")
 anchors_preset = 15
 anchor_right = 1.0

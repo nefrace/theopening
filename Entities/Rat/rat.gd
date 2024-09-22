@@ -13,6 +13,7 @@ var hit_trigger: bool:
 			return
 		gotHit = true
 		health -= 1
+		$Hit.play()
 		$AnimationTree.set("parameters/conditions/got_hit", true)
 		await get_tree().create_timer(0.3).timeout
 		$AnimationTree.set("parameters/conditions/got_hit", false)
@@ -32,6 +33,8 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
+	if player.dead:
+		return
 	var diff := player.position - position
 	var dist := diff.length()
 	if !seenPlayer:
@@ -42,15 +45,15 @@ func _physics_process(delta: float) -> void:
 				var body = $RayCast2D.get_collider()
 				if body.is_in_group("Player"):
 					seenPlayer = true
-					$AnimationTree.set("parameters/conditions/run", true)
 		return
+	$AnimationTree.set("parameters/conditions/run", true)
 	look_at(player.position)
 	rotation_degrees = floor((rotation_degrees - 45) / 90) * 90
 	velocity = diff.normalized() * 30
 	if active:
 		if !gotHit:
 			move_and_slide()
-		if dist <= 20:
+		if dist <= 25:
 			startBite()
 		
 func startBite():

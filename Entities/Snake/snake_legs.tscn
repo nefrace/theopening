@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://djod5xtal5xfk"]
+
+[ext_resource type="Script" path="res://Entities/Snake/snake_legs.gd" id="1_0tjtn"]
+[ext_resource type="Texture2D" uid="uid://canolreiialk3" path="res://Assets/Textures/sheet_full.png" id="1_v78tu"]
+
+[sub_resource type="Animation" id="Animation_s1thj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(272, 282, 16, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_ybh5e"]
+resource_name = "Walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(336, 305, 16, 13), Rect2(304, 305, 16, 13)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y8jws"]
+_data = {
+"RESET": SubResource("Animation_s1thj"),
+"Walk": SubResource("Animation_ybh5e")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0iq7e"]
+radius = 16.0
+
+[node name="Snake" type="Area2D"]
+script = ExtResource("1_0tjtn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_v78tu")
+region_enabled = true
+region_rect = Rect2(272, 282, 16, 22)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y8jws")
+}
+autoplay = "Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0iq7e")

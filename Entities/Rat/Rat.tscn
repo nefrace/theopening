@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddnu45qq0utpf"]
+[gd_scene load_steps=27 format=3 uid="uid://ddnu45qq0utpf"]
 
 [ext_resource type="Script" path="res://Entities/Rat/rat.gd" id="1_afsns"]
 [ext_resource type="Texture2D" uid="uid://oojp4rqatiok" path="res://Assets/Textures/Rat.png" id="1_dyigl"]
+[ext_resource type="AudioStream" uid="uid://bfhxfpfom7fae" path="res://Assets/Audio/sfx/sfx_rat_hit.mp3" id="3_c2git"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2dlq"]
 radius = 7.0
@@ -12,7 +13,7 @@ radius = 11.0
 
 [sub_resource type="Animation" id="Animation_rkj48"]
 resource_name = "Bite"
-length = 0.8
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,7 +21,7 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.366667, 0.433333, 0.623282, 0.7),
+"times": PackedFloat32Array(0, 0.12, 0.22, 0.26, 0.373969, 0.42),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [3, 4, 5, 6, 5, 4]
@@ -32,7 +33,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.7),
+"times": PackedFloat32Array(0.42),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -185,11 +186,12 @@ states/Idle/position = Vector2(373, 72)
 states/Run/node = SubResource("AnimationNodeAnimation_eegso")
 states/Run/position = Vector2(652, 79)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5ypgr"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_uuuqi"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_nnxw4"), "Run", "Bite", SubResource("AnimationNodeStateMachineTransition_7yt03"), "Idle", "Bite", SubResource("AnimationNodeStateMachineTransition_p4vti"), "Bite", "Idle", SubResource("AnimationNodeStateMachineTransition_sque5"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_shibs"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_r85oo"), "Bite", "Hit", SubResource("AnimationNodeStateMachineTransition_ukmob"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_syf4j")]
-graph_offset = Vector2(15, 12)
+graph_offset = Vector2(-21, -6)
 
 [node name="Rat" type="CharacterBody2D" groups=["Enemies", "Hitable"]]
 y_sort_enabled = true
 collision_layer = 5
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_afsns")
 
@@ -227,3 +229,6 @@ parameters/conditions/bite = false
 parameters/conditions/got_hit = false
 parameters/conditions/idle = false
 parameters/conditions/run = false
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c2git")

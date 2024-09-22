@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4iyrjrb0k52l"]
+
+[ext_resource type="Script" path="res://Entities/Gate/gate.gd" id="1_n5myn"]
+[ext_resource type="Texture2D" uid="uid://canolreiialk3" path="res://Assets/Textures/sheet_full.png" id="1_swwwj"]
+[ext_resource type="AudioStream" uid="uid://cesrhh42728wo" path="res://Assets/Audio/sfx/sfx_door_opens.mp3" id="3_k0fl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmw5c"]
+size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otho2"]
+size = Vector2(28, 20)
+
+[node name="Gate" type="StaticBody2D" groups=["Doors"]]
+y_sort_enabled = true
+script = ExtResource("1_n5myn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_swwwj")
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(128, 464, 32, 32)
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_cmw5c")
+
+[node name="SfxOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_k0fl0")
+
+[node name="KeyArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KeyArea"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_otho2")

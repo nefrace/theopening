@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7oymuhg0i48d"]
+
+[ext_resource type="PackedScene" uid="uid://c4iyrjrb0k52l" path="res://Entities/Gate/gate.tscn" id="1_6neje"]
+[ext_resource type="AudioStream" uid="uid://deutxoxpph7bs" path="res://Assets/Audio/sfx/sfx_small_door_2.mp3" id="2_5ly2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yv08k"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgb2j"]
+size = Vector2(14, 16)
+
+[node name="Door" instance=ExtResource("1_6neje")]
+
+[node name="Sprite" parent="." index="0"]
+offset = Vector2(0, -8)
+region_rect = Rect2(112, 464, 16, 16)
+
+[node name="Collider" parent="." index="1"]
+shape = SubResource("RectangleShape2D_yv08k")
+
+[node name="SfxOpen" parent="." index="2"]
+stream = ExtResource("2_5ly2m")
+
+[node name="CollisionShape2D" parent="KeyArea" index="0"]
+shape = SubResource("RectangleShape2D_bgb2j")
+
+[connection signal="area_entered" from="KeyArea" to="." method="_on_key_area_area_entered"]

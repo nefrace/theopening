@@ -18,6 +18,13 @@ func switch_to_packed(scene: PackedScene, center_in: Vector2 = Vector2(80, 72), 
 	get_tree().change_scene_to_packed(scene)
 	mat.set_shader_parameter("center", center_out)
 	await tween_out()
+	
+func restart(center_in: Vector2 = Vector2(80, 72), center_out: Vector2 = Vector2(80, 72)):
+	mat.set_shader_parameter("center", center_in)
+	await tween_in()
+	get_tree().reload_current_scene()
+	mat.set_shader_parameter("center", center_out)
+	await tween_out()
 
 
 func tween_in():

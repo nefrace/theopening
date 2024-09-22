@@ -6,7 +6,6 @@
 size = Vector2(54, 16)
 
 [node name="LevelSwitcher" type="Area2D"]
-position = Vector2(79, 45)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_suu8t")

@@ -1,6 +1,7 @@
 extends Area2D
 
-@export var new_scene: PackedScene
+@export_file var new_scene
+@export var need_torch := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,9 +12,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		SceneManager.switch_to_packed(new_scene, body.position - get_viewport_rect().position)
+		if body.holdingItem == null && need_torch:
+			return
+		var center := get_tree().root.get_camera_2d().get_screen_center_position() - Vector2(80, 72)
+		var pos := body.position - center
+		
+		SceneManager.switch_to_file(new_scene, pos)
